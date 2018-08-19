@@ -10,11 +10,11 @@
       <div class="bd-portrait"></div>
     </div>
     <ul class="bd-menu-nav" [ngClass]="{'show': showMenu}">
-      <li class="bd-nav-item" [ngClass]="{'show': showMenu}">
-        <a href="/" class="bd-nav-link">Home</a>
+      <li class="bd-nav-item" [ngClass]="{'show': showMenu}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a routerLink="/" class="bd-nav-link">Home</a>
       </li>
-      <li class="bd-nav-item" [ngClass]="{'show': showMenu}">
-        <a href="/" class="bd-nav-link">Progression</a>
+      <li class="bd-nav-item" [ngClass]="{'show': showMenu}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a routerLink="/progression" class="bd-nav-link">Progression</a>
       </li>
     </ul>
   </div>
