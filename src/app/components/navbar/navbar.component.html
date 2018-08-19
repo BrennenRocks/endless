@@ -1,0 +1,21 @@
+<header>
+  <div (click)="toggleMenu()" class="bd-menu-btn" [ngClass]="{'close': showMenu}">
+    <div class="bd-btn-line"></div>
+    <div class="bd-btn-line"></div>
+    <div class="bd-btn-line"></div>
+  </div>
+
+  <div class="bd-menu" [ngClass]="{'show': showMenu}">
+    <div class="bd-menu-branding" [ngClass]="{'show': showMenu}">
+      <div class="bd-portrait"></div>
+    </div>
+    <ul class="bd-menu-nav" [ngClass]="{'show': showMenu}">
+      <li class="bd-nav-item" [ngClass]="{'show': showMenu}">
+        <a href="/" class="bd-nav-link">Home</a>
+      </li>
+      <li class="bd-nav-item" [ngClass]="{'show': showMenu}">
+        <a href="/" class="bd-nav-link">Progression</a>
+      </li>
+    </ul>
+  </div>
+</header>
