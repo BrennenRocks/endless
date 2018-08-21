@@ -1,9 +1,40 @@
 @import '~src/sass/variables';
 @import '~src/sass/mixins';
 
+.bd-top-menu {
+  .bd-logo {
+    color: #fff;
+    margin-top: 1rem;
+  }
+
+  .bd-top-nav-item {
+    display: inline-block;
+    margin: 0 1rem 0 1rem;
+    @include easeOut;
+
+    &.active > a {
+      color: $secondary-color;
+    }
+  }
+
+  .bd-top-nav-link {
+    display: inline-block;
+    position: relative;
+    font-size: 30px;
+    font-weight: 300;
+    color: #fff;
+    text-decoration: none;
+    padding: .5rem 0 .5rem 0;
+    @include easeOut;
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+}
 // Menu button
 .bd-menu-btn {
-  position: absolute;
+  position: fixed;
   z-index: 3;
   right: 35px;
   top: 35px;
@@ -102,13 +133,6 @@
     // Slide in from right
     &.show {
       transform: translate3d(0, 0, 0);
-      &:nth-child(1) {
-        transition-delay: 0.3s;
-      }
-
-      &:nth-child(2) {
-        transition-delay: 0.4s;
-      }
     }
 
     &.active > a {
@@ -128,6 +152,15 @@
 
     &:hover {
       color: $secondary-color;
+    }
+  }
+}
+
+// Delay each nav item slide by 0.1s
+@for $i from 1 through 2 {
+  .bd-menu {
+    .bd-nav-item:nth-child(#{$i}) {
+      transition-delay: $i * 0.1s + 0.1s;
     }
   }
 }

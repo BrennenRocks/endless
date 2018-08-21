@@ -1,21 +1,40 @@
 <header>
-  <div (click)="toggleMenu()" class="bd-menu-btn" [ngClass]="{'close': showMenu}">
-    <div class="bd-btn-line"></div>
-    <div class="bd-btn-line"></div>
-    <div class="bd-btn-line"></div>
+  <div>
+    <div class="bd-top-menu">
+      <h1 class="bd-logo center-align">Endless</h1>
+
+      <ul class="bd-top-menu-nav center-align">
+        <li class="bd-top-nav-item" [routerLinkActive]="['active', 'underline']" [routerLinkActiveOptions]="{exact:true}">
+          <a routerLink="/" class="bd-top-nav-link">Home</a>
+        </li>
+        <li class="bd-top-nav-item" [routerLinkActive]="['active', 'underline']" [routerLinkActiveOptions]="{exact:true}">
+          <a routerLink="/progression" class="bd-top-nav-link">Progression</a>
+        </li>
+      </ul>
+    </div>
   </div>
 
-  <div class="bd-menu" [ngClass]="{'show': showMenu}">
-    <div class="bd-menu-branding" [ngClass]="{'show': showMenu}">
-      <div class="bd-portrait"></div>
-    </div>
-    <ul class="bd-menu-nav" [ngClass]="{'show': showMenu}">
-      <li class="bd-nav-item" [ngClass]="{'show': showMenu}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a routerLink="/" class="bd-nav-link">Home</a>
-      </li>
-      <li class="bd-nav-item" [ngClass]="{'show': showMenu}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a routerLink="/progression" class="bd-nav-link">Progression</a>
-      </li>
-    </ul>
-  </div>
+  <div *ngIf="scrolledMenu">
+      <div (click)="toggleMenu()" class="bd-menu-btn" [ngClass]="{'close': showMenu}">
+          <div class="bd-btn-line"></div>
+          <div class="bd-btn-line"></div>
+          <div class="bd-btn-line"></div>
+        </div>
+      
+        <div class="bd-menu" [ngClass]="{'show': showMenu}">
+          <div class="bd-menu-branding" [ngClass]="{'show': showMenu}">
+            <div class="bd-portrait"></div>
+          </div>
+          <ul class="bd-menu-nav" [ngClass]="{'show': showMenu}">
+            <li class="bd-nav-item" [ngClass]="{'show': showMenu}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+              <a routerLink="/" class="bd-nav-link">Home</a>
+            </li>
+            <li class="bd-nav-item" [ngClass]="{'show': showMenu}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+              <a routerLink="/progression" class="bd-nav-link">Progression</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+  
 </header>
