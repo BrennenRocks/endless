@@ -17,7 +17,6 @@ export class NavbarComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll($event) {
-    console.log(window.scrollY);
       if (window.scrollY > 150) {
         this.scrolledMenu = true;
       } else {

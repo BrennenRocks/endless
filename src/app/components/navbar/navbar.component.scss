@@ -14,6 +14,35 @@
     margin-top: 1rem;
   }
 
+  &-nav {
+    display: flex;
+  }
+
+  .bd-top-nav-item {
+    display: inline-block;
+    margin: 0 1rem 0 1rem;
+    @include easeOut;
+
+    &.active > a {
+      color: $secondary-color;
+    }
+  }
+
+  .bd-top-nav-link {
+    display: inline-block;
+    position: relative;
+    font-size: 20px;
+    font-weight: 300;
+    color: #fff;
+    text-decoration: none;
+    padding: .5rem 0 .5rem 0;
+    @include easeOut;
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+
   /* Lines above and below links on hover  */
   .bd-top-nav-item .bd-top-nav-link:before, .bd-top-nav-item .bd-top-nav-link:after {
       position: absolute;
@@ -38,31 +67,6 @@
   .bd-top-nav-item .bd-top-nav-link:hover:before, .bd-top-nav-item .bd-top-nav-link:hover:after {
       opacity: 1;
       width: 100%;
-  }
-  
-  .bd-top-nav-item {
-    display: inline-block;
-    margin: 0 1rem 0 1rem;
-    @include easeOut;
-
-    &.active > a {
-      color: $secondary-color;
-    }
-  }
-
-  .bd-top-nav-link {
-    display: inline-block;
-    position: relative;
-    font-size: 20px;
-    font-weight: 300;
-    color: #fff;
-    text-decoration: none;
-    padding: .5rem 0 .5rem 0;
-    @include easeOut;
-
-    &:hover {
-      color: $secondary-color;
-    }
   }
 }
 // Menu button
