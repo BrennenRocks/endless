@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import { environment } from '../../environments/environment';
+import { MEMBERS } from '../constants/constants';
+
 @Injectable({
   providedIn: 'root'
 })
 export class WowService {
 
-  private blizz: string = 'bbcng2tbc27vwdv3tamjyky3xxqvyy7e';
+  private blizz: string = environment.blizz;
 
   constructor(
     private http: HttpClient
@@ -21,5 +24,13 @@ export class WowService {
     return this.http.get<any>('https://us.api.battle.net/wow/item/' + id + '?locale=en_US&apikey=' + this.blizz);
   }
 
+  public getStatistics(realm: string, name: string): Observable<any> {
+    return this.http.get<any>('https://us.api.battle.net/wow/character/' + realm + '/' + name + '?fields=statistics&locale=en_US&apikey=' + this.blizz);
+  }
+
+  public getSpotlightStats(): Observable<any> {
+    let char = MEMBERS[Math.floor(Math.random() * MEMBERS.length - 1)]
+    return this.http.get<any>('https://us.api.battle.net/wow/character/' + char.realm + '/' + char.name + '?fields=statistics&locale=en_US&apikey=' + this.blizz);
+  }
 
 }

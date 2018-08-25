@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { WowService } from '../../services/wow.service';
 import { MzToastService } from 'ngx-materialize';
 
+import { randomNumber } from '../../constants/constants';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,6 +15,9 @@ export class HomeComponent implements OnInit {
 
   public newsLoading: boolean = true;
   public news: any[];
+
+  public spotlightLoading: boolean = true;
+  public spotlight: any;
 
   constructor(
     private wowService: WowService,
@@ -46,6 +51,21 @@ export class HomeComponent implements OnInit {
       console.log(this.news);
       this.newsLoading = false;
     });
+
+    this.wowService.getSpotlightStats().subscribe(data => {
+      if (data.status === 'nok') {
+        this.toastService.show(data.reason, 5000, 'red');
+        return;
+      }
+
+      let subStat = data.statistics.subCategories[randomNumber(0, data.statistics.subCategories.length - 1)];
+      this.spotlight = subStat.statistics[randomNumber(0, subStat.statistics.length - 1)];
+      this.spotlight.character = data.name;
+      this.spotlight.class = data.class;
+      this.spotlight.thumbnail = data.thumbnail;
+      console.log(this.spotlight);
+      this.spotlightLoading = false;
+    })
   }
 
 }

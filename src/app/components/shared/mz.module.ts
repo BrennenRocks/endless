@@ -5,6 +5,7 @@ import { MzButtonModule } from 'ngx-materialize';
 import { MzCardModule } from 'ngx-materialize';
 import { MzIconMdiModule } from 'ngx-materialize';
 import { MzParallaxModule } from 'ngx-materialize';
+import { MzSpinnerModule } from 'ngx-materialize';
 import { MzToastModule } from 'ngx-materialize';
 
 @NgModule({
@@ -12,7 +13,8 @@ import { MzToastModule } from 'ngx-materialize';
     MzButtonModule,
     MzCardModule,
     MzIconMdiModule,
-    MzParallaxModule
+    MzParallaxModule,
+    MzSpinnerModule
   ],
   exports: [
     CommonModule,
@@ -20,6 +22,7 @@ import { MzToastModule } from 'ngx-materialize';
     MzCardModule,
     MzIconMdiModule,
     MzParallaxModule,
+    MzSpinnerModule,
     MzToastModule
   ]
 })

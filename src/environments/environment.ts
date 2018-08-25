@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  blizz: 'bbcng2tbc27vwdv3tamjyky3xxqvyy7e',
   firebase: {
     apiKey: "AIzaSyCoKd5Ez2VY4cIwumfRy5ogAyKvlBAUk14",
     authDomain: "endlessdev-21d15.firebaseapp.com",
