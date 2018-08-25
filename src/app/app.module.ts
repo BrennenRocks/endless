@@ -5,6 +5,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { MzButtonModule } from 'ngx-materialize'
+import { MzCardModule } from 'ngx-materialize'
+import { MzIconMdiModule } from 'ngx-materialize'
+import { MzParallaxModule } from 'ngx-materialize'
+
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
@@ -25,6 +30,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     AngularFirestoreModule,
     BrowserAnimationsModule,
     BrowserModule,
+    MzButtonModule,
+    MzCardModule,
+    MzIconMdiModule,
+    MzParallaxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

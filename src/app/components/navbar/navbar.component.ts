@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit {
         this.scrolledMenu = true;
       } else {
         this.scrolledMenu = false;
+        this.showMenu = false;
       }
   }
 

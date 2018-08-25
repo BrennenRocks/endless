@@ -2,11 +2,44 @@
 @import '~src/sass/mixins';
 
 .bd-top-menu {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: white;
+  text-align: center;
+
   .bd-logo {
     color: #fff;
     margin-top: 1rem;
   }
 
+  /* Lines above and below links on hover  */
+  .bd-top-nav-item .bd-top-nav-link:before, .bd-top-nav-item .bd-top-nav-link:after {
+      position: absolute;
+      opacity: 0;
+      width: 0%;
+      height: 2px;
+      content: '';
+      background: #fff;
+      transition: all 0.3s;
+  }
+
+  .bd-top-nav-item .bd-top-nav-link:before {
+      left: 0px;
+      top: 0px;
+  }
+
+  .bd-top-nav-item .bd-top-nav-link:after {
+      right: 0px;
+      bottom: 0px;
+  }
+
+  .bd-top-nav-item .bd-top-nav-link:hover:before, .bd-top-nav-item .bd-top-nav-link:hover:after {
+      opacity: 1;
+      width: 100%;
+  }
+  
   .bd-top-nav-item {
     display: inline-block;
     margin: 0 1rem 0 1rem;
@@ -20,7 +53,7 @@
   .bd-top-nav-link {
     display: inline-block;
     position: relative;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 300;
     color: #fff;
     text-decoration: none;
@@ -35,7 +68,7 @@
 // Menu button
 .bd-menu-btn {
   position: fixed;
-  z-index: 3;
+  z-index: 4;
   right: 35px;
   top: 35px;
   cursor: pointer;
@@ -72,6 +105,7 @@
 // Menu Overlay
 .bd-menu {
   position: fixed;
+  z-index: 3;
   top: 0;
   width: 100%;
   visibility: hidden;
@@ -126,6 +160,32 @@
     }
   }
 
+  /* Lines above and below links on hover  */
+  .bd-nav-item .bd-nav-link:before, .bd-nav-item .bd-nav-link:after {
+    position: absolute;
+    opacity: 0;
+    width: 0%;
+    height: 2px;
+    content: '';
+    background: #fff;
+    transition: all 0.3s;
+  }
+
+  .bd-nav-item .bd-nav-link:before {
+      left: 0px;
+      top: 0px;
+  }
+
+  .bd-nav-item .bd-nav-link:after {
+      right: 0px;
+      bottom: 0px;
+  }
+
+  .bd-nav-item .bd-nav-link:hover:before, .bd-nav-item .bd-nav-link:hover:after {
+      opacity: 1;
+      width: 100%;
+  }
+
   .bd-nav-item {
     transform: translate3d(600px, 0, 0);
     @include easeOut;
@@ -157,7 +217,7 @@
 }
 
 // Delay each nav item slide by 0.1s
-@for $i from 1 through 2 {
+@for $i from 1 through 3 {
   .bd-menu {
     .bd-nav-item:nth-child(#{$i}) {
       transition-delay: $i * 0.1s + 0.1s;
