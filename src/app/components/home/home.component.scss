@@ -1,3 +1,6 @@
+@import '~src/sass/variables';
+@import '~src/sass/mixins';
+
 .bg-box {
   position: absolute;
   height: 700px;
@@ -36,5 +39,40 @@
     position: absolute;
     bottom: -20px;
     right: 15px;
+  }
+
+  .bd-guild-news {
+    &-item {
+      padding: .5rem 0;
+      border-bottom: 1px solid white;
+
+      .q0 {
+        color: $color-quality-poor;
+      }
+
+      .q1 {
+        color: $color-quality-common;
+      }
+
+      .q2 {
+        color: $color-quality-uncommon;
+      }
+
+      .q3 {
+        color: $color-quality-rare;
+      }
+
+      .q4 {
+        color: $color-quality-epic;
+      }
+
+      .q5 {
+        color: $color-quality-legendary;
+      }
+
+      .q6 {
+        color: $color-quality-artifact;
+      }
+    }
   }
 }

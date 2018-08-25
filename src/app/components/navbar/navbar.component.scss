@@ -24,7 +24,7 @@
     @include easeOut;
 
     &.active > a {
-      color: $secondary-color;
+      color: $color-secondary;
     }
   }
 
@@ -39,7 +39,7 @@
     @include easeOut;
 
     &:hover {
-      color: $secondary-color;
+      color: $color-secondary;
     }
   }
 
@@ -134,7 +134,7 @@
   &-nav {
     margin: 0;
     padding: 0;
-    background: rgba(darken($primary-color, 5), 0.9);
+    background: rgba(darken($color-primary, 5), 0.9);
     transform: translate3d(0, -100%, 0);
     @include easeOut;
 
@@ -146,7 +146,7 @@
 
   // Branding side
   &-branding {
-    background: rgba(darken($primary-color, 1), 0.9);
+    background: rgba(darken($color-primary, 1), 0.9);
     transform: translate3d(0, 100%, 0);
     @include easeOut;
 
@@ -160,7 +160,7 @@
       height: 250px;
       background: url('../../../assets/images/troll.jpg');
       border-radius: 50%;
-      border: 3px solid $secondary-color;
+      border: 3px solid $color-secondary;
     }
   }
 
@@ -200,7 +200,7 @@
     }
 
     &.active > a {
-      color: $secondary-color;
+      color: $color-secondary;
     }
   }
 
@@ -215,7 +215,7 @@
     @include easeOut;
 
     &:hover {
-      color: $secondary-color;
+      color: $color-secondary;
     }
   }
 }

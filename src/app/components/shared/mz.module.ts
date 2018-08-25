@@ -3,15 +3,14 @@ import { CommonModule } from "@angular/common";
 
 import { MzButtonModule } from 'ngx-materialize';
 import { MzCardModule } from 'ngx-materialize';
-import { MzCollectionModule } from 'ngx-materialize';
 import { MzIconMdiModule } from 'ngx-materialize';
 import { MzParallaxModule } from 'ngx-materialize';
+import { MzToastModule } from 'ngx-materialize';
 
 @NgModule({
   imports: [
     MzButtonModule,
     MzCardModule,
-    MzCollectionModule,
     MzIconMdiModule,
     MzParallaxModule
   ],
@@ -19,9 +18,9 @@ import { MzParallaxModule } from 'ngx-materialize';
     CommonModule,
     MzButtonModule,
     MzCardModule,
-    MzCollectionModule,
     MzIconMdiModule,
-    MzParallaxModule
+    MzParallaxModule,
+    MzToastModule
   ]
 })
 export class MzModule {

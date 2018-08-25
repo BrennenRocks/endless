@@ -29,10 +29,18 @@
           </mz-card-title>
           <mz-card-content>
             <ul class="bd-guild-news">
-              <li class="bd-guild-news-item">News item 1</li>
-              <li class="bd-guild-news-item">News item 2</li>
-              <li class="bd-guild-news-item">News item 3</li>
-              <li class="bd-guild-news-item">News item 4</li>
+              <li *ngFor="let item of news" class="bd-guild-news-item">
+                <a href="https://worldofwarcraft.com/en-us/character/kiljaeden/{{item.character}}" style="color: #ffb100">{{item.character}}</a>
+                <span *ngIf="item.type === 'playerAchievement'">
+                  earned the achievement <a href="">{{item.achievement.title}}</a>
+                </span>
+                <span *ngIf="item.type === 'itemLoot'"> obtained 
+                  <a href="//www.wowhead.com/item={{item.itemId}}/bonus={{item.bonusLists | separateArray:':'}}" target="_blank">
+                    {{item.itemName}}
+                  </a>
+                </span>
+                <span class="right" style="color: lightgray; font-size: 10px">{{item.timestamp | date: 'shortDate'}}</span>
+              </li>
             </ul>
           </mz-card-content>
         </mz-card>
@@ -43,10 +51,11 @@
           class="blue-grey darken-1 white-text"
           [hoverable]="true">
           <mz-card-title>
-            Other Stuff
+            Member Spotlight
           </mz-card-title>
           <mz-card-content>
-            I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
+            <img src="assets/images/demonhunter.png">
+            Boys has drowned 2 times!
           </mz-card-content>
         </mz-card>
       </div>
