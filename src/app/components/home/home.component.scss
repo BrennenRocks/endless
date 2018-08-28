@@ -44,6 +44,7 @@
   .bd-guild-news {
     &-item {
       padding: .5rem 0;
+      margin: 0;
       border-bottom: 1px solid white;
 
       .q0 {
@@ -73,6 +74,20 @@
       .q6 {
         color: $color-quality-artifact;
       }
+    }
+  }
+
+  .bd-member-spotlight {
+    .bd-member-thumbnail {
+      border-radius: 10%;  
+    }
+
+    img.f0 {
+      box-shadow: 0 0 0 1px $color-alliance, 0 0 15px $color-alliance;
+    }
+
+    img.f1 {
+      box-shadow: 0 0 0 1px $color-horde, 0 0 15px $color-horde;
     }
   }
 }

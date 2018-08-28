@@ -48,7 +48,6 @@ export class HomeComponent implements OnInit {
       });
 
       this.news = temp;
-      console.log(this.news);
       this.newsLoading = false;
     });
 
@@ -58,12 +57,13 @@ export class HomeComponent implements OnInit {
         return;
       }
 
+      console.log(data);
       let subStat = data.statistics.subCategories[randomNumber(0, data.statistics.subCategories.length - 1)];
       this.spotlight = subStat.statistics[randomNumber(0, subStat.statistics.length - 1)];
       this.spotlight.character = data.name;
       this.spotlight.class = data.class;
+      this.spotlight.faction = data.faction;
       this.spotlight.thumbnail = data.thumbnail;
-      console.log(this.spotlight);
       this.spotlightLoading = false;
     })
   }

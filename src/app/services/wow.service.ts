@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
-import { MEMBERS } from '../constants/constants';
+import { MEMBERS, randomNumber } from '../constants/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,9 @@ export class WowService {
   }
 
   public getSpotlightStats(): Observable<any> {
-    let char = MEMBERS[Math.floor(Math.random() * MEMBERS.length - 1)]
+    const rand = randomNumber(0, MEMBERS.length - 1);
+    console.log(rand);
+    let char = MEMBERS[rand];
     return this.http.get<any>('https://us.api.battle.net/wow/character/' + char.realm + '/' + char.name + '?fields=statistics&locale=en_US&apikey=' + this.blizz);
   }
 

@@ -30,18 +30,24 @@
           <mz-card-content>
             <div *ngIf="!newsLoading">
               <ul class="bd-guild-news">
-                <li *ngFor="let item of news" class="bd-guild-news-item">
-                  <a href="https://worldofwarcraft.com/en-us/character/kiljaeden/{{item.character}}" style="color: #ffb100">{{item.character}}</a>
-                  <span *ngIf="item.type === 'playerAchievement'">
-                    earned the achievement <a href="https://worldofwarcraft.com/en-us/character/kiljaeden/{{item.character}}/achievements">{{item.achievement.title}}</a>
-                  </span>
-                  <span *ngIf="item.type === 'itemLoot'"> obtained 
-                    <a href="//www.wowhead.com/item={{item.itemId}}/bonus={{item.bonusLists | separateArray:':'}}" target="_blank">
-                      {{item.itemName}}
-                    </a>
-                  </span>
-                  <span class="right" style="color: lightgray; font-size: 10px">{{item.timestamp | date: 'shortDate'}}</span>
-                </li>
+                <div class="row bd-guild-news-item" *ngFor="let item of news">
+                  <div class="col s10">
+                    <li>
+                      <a href="https://worldofwarcraft.com/en-us/character/kiljaeden/{{item.character}}" style="color: #ffb100">{{item.character}}</a>
+                      <span *ngIf="item.type === 'playerAchievement'">
+                        earned the achievement <a href="https://worldofwarcraft.com/en-us/character/kiljaeden/{{item.character}}/achievements" style="color: #ffb100">{{item.achievement.title}}</a>
+                      </span>
+                      <span *ngIf="item.type === 'itemLoot'"> obtained 
+                        <a href="//www.wowhead.com/item={{item.itemId}}/bonus={{item.bonusLists | separateArray:':'}}" target="_blank">
+                          {{item.itemName}}
+                        </a>
+                      </span>
+                    </li>
+                  </div>
+                  <div class="col s2">
+                    <span class="right" style="color: lightgray; font-size: 10px">{{item.timestamp | date: 'shortDate'}}</span>
+                  </div>
+                </div>
               </ul>
             </div>
 
@@ -63,26 +69,25 @@
             Member Spotlight
           </mz-card-title>
           <mz-card-content>
-            <div *ngIf="!spotlightLoading">
-              <div class="row">
-                <div class="col s4">
-                  <img src="https://render-us.worldofwarcraft.com/character/{{spotlight.thumbnail}}" alt="User image" class="img-fluid">
+            <div *ngIf="!spotlightLoading" class="bd-member-spotlight">
+              <div class="row valign-wrapper" style="margin: 0">
+                <div class="col s3">
+                  <img src="https://render-us.worldofwarcraft.com/character/{{spotlight.thumbnail}}" alt="User image" class="bd-member-thumbnail f{{spotlight.faction}} responsive-img">
                 </div>
-                <div class="col s8">
-                  <div class="row">
-                    <img src="assets/images/demonhunter.png" style="width: 28px; height: 28px;">
-                    {{spotlight.character}}
+                <div class="col s9">
+                  <div class="row valign-wrapper">
+                    <img src="assets/images/demonhunter.png" style="width: 28px; height: 28px; margin-right: .5rem">
+                    <span style="font-size: 18px">{{spotlight.character}}</span>
                   </div>
                   <div class="row">
                     {{spotlight.name}} - {{spotlight.quantity}}
                   </div>
                 </div>
-                </div>
+              </div>
             </div>
 
-            <div *ngIf="spotlightLoading">
+            <div *ngIf="spotlightLoading" class="center-align">
               <mz-spinner
-                class="center-align"
                 [size]="'big'">
               </mz-spinner>
             </div>
