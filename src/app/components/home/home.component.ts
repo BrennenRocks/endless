@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WowService } from '../../services/wow.service';
 import { MzToastService } from 'ngx-materialize';
 
-import { randomNumber } from '../../constants/constants';
+import { IMAGE_CLASS_MAPPING, randomNumber } from '../../constants/constants';
 
 @Component({
   selector: 'app-home',
@@ -57,11 +57,10 @@ export class HomeComponent implements OnInit {
         return;
       }
 
-      console.log(data);
       let subStat = data.statistics.subCategories[randomNumber(0, data.statistics.subCategories.length - 1)];
       this.spotlight = subStat.statistics[randomNumber(0, subStat.statistics.length - 1)];
       this.spotlight.character = data.name;
-      this.spotlight.class = data.class;
+      this.spotlight.classImage = IMAGE_CLASS_MAPPING[data.class - 1];
       this.spotlight.faction = data.faction;
       this.spotlight.thumbnail = data.thumbnail;
       this.spotlightLoading = false;

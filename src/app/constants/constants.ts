@@ -5,6 +5,21 @@ export const MEMBERS = [
   { realm: "Kil'jaeden", name: 'Muspel' }, { realm: "Uldaman", name: 'Legias' }
 ]
 
+export const IMAGE_CLASS_MAPPING = [
+  'assets/images/warrior.png',
+  'assets/images/paladin.png',
+  'assets/images/hunter.png',
+  'assets/images/rogue.png',
+  'assets/images/priest.png',
+  'assets/images/deathknight.png',
+  'assets/images/shaman.png',
+  'assets/images/mage.png',
+  'assets/images/warlock.png',
+  'assets/images/monk.png',
+  'assets/images/druid.png',
+  'assets/images/demonhunter.png'
+]
+
 export const randomNumber = (min: number, max: number) => {
   return Math.floor((Math.random() * max) + min);
 }
