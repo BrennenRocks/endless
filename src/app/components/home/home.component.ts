@@ -3,6 +3,7 @@ import { WowService } from '../../services/wow.service';
 import { MzToastService } from 'ngx-materialize';
 
 import { IMAGE_CLASS_MAPPING, randomNumber } from '../../constants/constants';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -31,24 +32,24 @@ export class HomeComponent implements OnInit {
         return;
       }
 
+      let itemObs = [];
       let temp = data.news.splice(0, this.numberOfNewsItems);
       temp.map(item => {
         if (item.type === 'itemLoot') {
-          this.wowService.getItem(item.itemId).subscribe(data => {
-            if (data.status == 'nok') {
-              item.itemName = 'Not found';
-              item.itemQuality = 404;
-              return;
-            }
-
-            item.itemName = data.name;
-            item.itemQuality = data.quality;
-          });
+          itemObs.push(this.wowService.getItem(item.itemId));
         }
       });
 
-      this.news = temp;
-      this.newsLoading = false;
+      forkJoin(itemObs).subscribe(res => {
+        res.forEach(itemRes => {
+          let index = temp.map(item => item.itemId).indexOf(itemRes.id);
+          temp[index].itemName = itemRes.name;
+          temp[index].itemQuality = itemRes.quality;
+        });
+
+        this.news = temp;
+        this.newsLoading = false;
+      });
     });
 
     this.wowService.getSpotlightStats().subscribe(data => {

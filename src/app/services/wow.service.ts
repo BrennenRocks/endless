@@ -30,7 +30,6 @@ export class WowService {
 
   public getSpotlightStats(): Observable<any> {
     const rand = randomNumber(0, MEMBERS.length - 1);
-    console.log(rand);
     let char = MEMBERS[rand];
     return this.http.get<any>('https://us.api.battle.net/wow/character/' + char.realm + '/' + char.name + '?fields=statistics&locale=en_US&apikey=' + this.blizz);
   }
