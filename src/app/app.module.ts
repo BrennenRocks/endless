@@ -1,3 +1,4 @@
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,9 +25,10 @@ import { SeparateArrayPipe } from './pipes/separate-array.pipe';
     SeparateArrayPipe
   ],
   imports: [
-    AppRoutingModule,
+    AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase, 'endless'),
     AngularFirestoreModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,

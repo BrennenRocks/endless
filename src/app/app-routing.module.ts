@@ -8,7 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 
 const appRoutes = [
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'supersecretlogin', component: LoginComponent },
   { path: '**', component: HomeComponent }
 ]
 
