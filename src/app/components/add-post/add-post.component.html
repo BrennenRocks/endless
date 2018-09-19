@@ -5,7 +5,7 @@
     (dropped)="startUpload($event)"
     [class.hovering]="isHovering">
     
-    <h4>Drag and Drop an Image</h4>
+    <h4 class="center-align">Drag and Drop an Image</h4>
 
     <div class="file">
       <div class="file-field input-field">
@@ -74,7 +74,7 @@
                   name="date"
                   id="date"
                   type="text"
-                  [options]="{ formatSubmit: 'mm-dd-yyyy' }"
+                  [options]="{ formatSubmit: 'mm/dd/yyyy' }"
                   [label]="'Kill Date'" 
                   [(ngModel)]="post.date"/>
             </mz-datepicker-container>

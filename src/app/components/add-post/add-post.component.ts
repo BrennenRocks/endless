@@ -26,7 +26,6 @@ export class AddPostComponent implements OnInit {
   task: AngularFireUploadTask;
   percentage: Observable<number>;
   snapshot: Observable<any>;
-  downloadUrl: Observable<string>;
   isHovering: boolean;
 
   constructor(

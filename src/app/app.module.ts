@@ -20,6 +20,7 @@ import { SeparateArrayPipe } from './pipes/separate-array.pipe';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { DropZoneDirective } from './directives/drop-zone.directive';
 import { FileSizePipe } from './pipes/file-size.pipe';
+import { ProgressionComponent } from './components/progression/progression.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { FileSizePipe } from './pipes/file-size.pipe';
     AddPostComponent,
     DropZoneDirective,
     FileSizePipe,
+    ProgressionComponent,
   ],
   imports: [
     AngularFireAuthModule,

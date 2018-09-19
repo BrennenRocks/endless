@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+
 import { WowService } from '../../services/wow.service';
 import { MzToastService } from 'ngx-materialize';
 
 import { IMAGE_CLASS_MAPPING, randomNumber } from '../../constants/constants';
 import { forkJoin } from 'rxjs';
+import { Post } from '../../models/post';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +17,9 @@ export class HomeComponent implements OnInit {
 
   private numberOfNewsItems: number = 10;
 
+  public postLoading: boolean = true;
+  public post: Post;
+
   public newsLoading: boolean = true;
   public news: any[];
 
@@ -22,10 +28,16 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private wowService: WowService,
+    private postService: PostService,
     private toastService: MzToastService
   ) { }
 
   ngOnInit() {
+    this.postService.getPosts().subscribe(posts => {
+      this.post = posts[0];
+      this.postLoading = false;
+    });
+
     this.wowService.getNews().subscribe(data => {
       if (data.status === 'nok') {
         this.toastService.show(data.reason, 5000, 'red');

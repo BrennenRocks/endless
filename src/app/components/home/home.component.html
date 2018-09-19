@@ -5,18 +5,28 @@
     </div>
   </mz-parallax>
   <div class="container bd-content">
-    <mz-card
-      class="blue-grey darken-1 white-text"
-      [hoverable]="true">
-      <mz-card-image>
-        <img src="assets/images/icecreamelemental.jpg" />
-        <button mz-button class="bd-float-button right">Fight Summary</button>
-      </mz-card-image>
-  
-      <mz-card-title>
-        Most Recent Progression <span class="bd-progression-date">10/30/2018</span>
-      </mz-card-title>
-    </mz-card>
+    <div *ngIf="!postLoading">
+      <mz-card
+        class="blue-grey darken-1 white-text"
+        [hoverable]="true">
+        <mz-card-image>
+          <img [src]="post.imageUrl" />
+          <a *ngIf="post.warcraftLogsUrl" [attr.href]="post?.warcraftLogsUrl" target="_blank">
+            <button mz-button class="bd-float-button right">Fight Summary</button>
+          </a>
+        </mz-card-image>
+      
+        <mz-card-title>
+          {{ post.title }} <span class="bd-progression-date">{{ post.date }}</span>
+        </mz-card-title>
+      
+      
+      <mz-card-content *ngIf="post?.note">
+        {{ post.note }}
+      </mz-card-content>
+        
+      </mz-card>
+    </div>
 
     <div class="row">
 
