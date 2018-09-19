@@ -37,11 +37,11 @@ export class AddPostComponent implements OnInit {
   ngOnInit() {
   }
 
-  private toggleHover(event: boolean) {
+  public toggleHover(event: boolean) {
     this.isHovering = event;
   }
 
-  private startUpload(event: FileList) {
+  public startUpload(event: FileList) {
     const file = event.item(0);
     if (file.type.split('/')[0] !== 'image') {
       this.toastService.show('The file must be an image type', 5000, 'red');
@@ -71,7 +71,7 @@ export class AddPostComponent implements OnInit {
     );
   }
 
-  private onSubmit(): void {
+  public onSubmit(): void {
     if (this.post.title && this.post.imageUrl && this.post.date) {
       this.postService.addPost(this.post).then(res => this.toastService.show('Success!', 5000, 'green'))
       .catch(err => this.toastService.show('The post was not created, please try again later.', 5000, 'red'));

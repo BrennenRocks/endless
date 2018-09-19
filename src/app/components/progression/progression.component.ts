@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class ProgressionComponent implements OnInit {
 
-  private posts: Post[];
+  public posts: Post[];
 
   constructor(
     private route: ActivatedRoute
