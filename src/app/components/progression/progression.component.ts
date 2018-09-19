@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Post } from '../../models/post';
-import { PostService } from '../../services/post.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-progression',
@@ -9,19 +10,14 @@ import { PostService } from '../../services/post.service';
 })
 export class ProgressionComponent implements OnInit {
 
-  public loading: boolean = true;
-  public posts: Post[];
+  private posts: Post[];
 
   constructor(
-    private postService: PostService
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.postService.getPosts().subscribe(posts => {
-      this.posts = posts;
-      this.loading = false;
-      console.log(this.posts);
-    });
+    this.route.data.subscribe(posts => this.posts = posts[0]);
   }
 
 }

@@ -5,7 +5,7 @@
     </div>
   </mz-parallax>
   <div class="container bd-content">
-    <div *ngIf="!postLoading">
+    <div *ngIf="post">
       <mz-card
         class="blue-grey darken-1 white-text"
         [hoverable]="true">
@@ -20,11 +20,10 @@
           {{ post.title }} <span class="bd-progression-date">{{ post.date }}</span>
         </mz-card-title>
       
-      
-      <mz-card-content *ngIf="post?.note">
-        {{ post.note }}
-      </mz-card-content>
-        
+        <mz-card-content *ngIf="post?.note">
+          {{ post.note }}
+        </mz-card-content>
+          
       </mz-card>
     </div>
 
@@ -106,7 +105,5 @@
       </div>
 
     </div>
-
-
   </div>
 </div>

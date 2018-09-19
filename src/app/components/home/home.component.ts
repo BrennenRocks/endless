@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { WowService } from '../../services/wow.service';
 import { MzToastService } from 'ngx-materialize';
@@ -6,7 +7,6 @@ import { MzToastService } from 'ngx-materialize';
 import { IMAGE_CLASS_MAPPING, randomNumber } from '../../constants/constants';
 import { forkJoin } from 'rxjs';
 import { Post } from '../../models/post';
-import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-home',
@@ -28,14 +28,13 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private wowService: WowService,
-    private postService: PostService,
-    private toastService: MzToastService
+    private toastService: MzToastService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.postService.getPosts().subscribe(posts => {
-      this.post = posts[0];
-      this.postLoading = false;
+    this.route.data.subscribe(posts => {
+      this.post = posts[0][0];
     });
 
     this.wowService.getNews().subscribe(data => {

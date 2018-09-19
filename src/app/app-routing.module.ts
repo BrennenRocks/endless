@@ -7,10 +7,11 @@ import { LoginComponent } from './components/login/login.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ProgressionComponent } from './components/progression/progression.component';
+import { PreloadGuard } from './guards/preload.guard';
 
 const appRoutes = [
-  { path: '', component: HomeComponent },
-  { path: 'progression', component: ProgressionComponent },
+  { path: '', component: HomeComponent, resolve: [PreloadGuard] },
+  { path: 'progression', component: ProgressionComponent, resolve: [PreloadGuard] },
   { path: 'supersecretlogin', component: LoginComponent },
   { path: 'add-post', component: AddPostComponent, canActivate: [AuthGuard] },
   { path: '**', component: HomeComponent }
