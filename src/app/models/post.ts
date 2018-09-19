@@ -4,5 +4,5 @@ export interface Post {
   imageUrl: string,
   date: string,
   note?: string,
-  fightSummaryUrl?: string,
+  warcraftLogsUrl?: string,
 }

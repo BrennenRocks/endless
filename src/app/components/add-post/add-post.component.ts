@@ -20,7 +20,7 @@ export class AddPostComponent implements OnInit {
     imageUrl: '',
     date: '',
     note: '',
-    fightSummaryUrl: '',
+    warcraftLogsUrl: '',
   }
 
   task: AngularFireUploadTask;
@@ -74,19 +74,21 @@ export class AddPostComponent implements OnInit {
 
   private onSubmit(): void {
     if (this.post.title && this.post.imageUrl && this.post.date) {
-      this.postService.addPost(this.post);
+      this.postService.addPost(this.post).then(res => this.toastService.show('Success!', 5000, 'green'))
+      .catch(err => this.toastService.show('The post was not created, please try again later.', 5000, 'red'));
+
       this.post.title = '';
       this.post.imageUrl = '';
       this.post.date = '';
       this.post.note = '';
-      this.post.fightSummaryUrl = '';
+      this.post.warcraftLogsUrl = '';
     } else {
       this.toastService.show('The post must have a title, date, and image.', 5000, 'red');
     }
   }
 
   isActive(snapshot) {
-    return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes
+    return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
   }
 
 }

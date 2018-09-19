@@ -3,7 +3,7 @@
 </div>
 
 <ng-template #guest>
-  <div class="valign-wrapper">
+  <div class="bd-content white-text">
     <button mz-button (click)="auth.googleLogin()">
       <i mz-icon-mdi 
         [align]="'right'"
@@ -16,7 +16,7 @@
 </ng-template>
 
 <ng-template #authenticated>
-  <div *ngIf="auth.user | async as user">
+  <div *ngIf="auth.user | async as user" class="bd-content white-text">
     <h3>Logged in as {{ user.displayName }}</h3>
     <h4>{{ user.email }}</h4>
     <h6>{{ user.uid }}</h6>
@@ -28,5 +28,10 @@
       </i>
       Logout
     </button>
+    <a href="/add-post" style="margin-left: 1rem">
+      <button mz-button>
+        Add Post
+      </button>
+    </a>
   </div>
 </ng-template>

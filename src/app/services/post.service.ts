@@ -32,8 +32,8 @@ export class PostService {
     return this.posts;
   }
 
-  public addPost(post: Post): void {
-    this.postsCollection.add(post);
+  public addPost(post: Post) {
+    return this.postsCollection.add(post);
   }
 
   public updatePost(post: Post): void {
