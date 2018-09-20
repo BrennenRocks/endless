@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
 
 import { PostService } from '../../services/post.service';
 import { Post } from '../../models/post';
@@ -56,31 +56,28 @@ export class AddPostComponent implements OnInit {
     }
 
     this.task = this.storage.upload(path, file);
+    this.task.then(() => {
+      this.storage.ref(path).getDownloadURL().subscribe(url => {
+        console.log(url);
+        this.post.imageUrl = url;
+      })
+    });
 
     this.percentage = this.task.percentageChanges();
     this.snapshot = this.task.snapshotChanges();
-
-    this.snapshot = this.task.snapshotChanges().pipe(
-      tap(snap => {
-        if (snap.bytesTransferred === snap.totalBytes) {
-          this.storage.ref(path).getDownloadURL().subscribe(url => {
-            this.post.imageUrl = url;
-          });
-        }
-      })
-    );
   }
 
   public onSubmit(): void {
     if (this.post.title && this.post.imageUrl && this.post.date) {
-      this.postService.addPost(this.post).then(res => this.toastService.show('Success!', 5000, 'green'))
+      this.postService.addPost(this.post).then(res => {
+        this.post.title = '';
+        this.post.imageUrl = '';
+        this.post.date = '';
+        this.post.note = '';
+        this.post.warcraftLogsUrl = '';
+        this.toastService.show('Success!', 5000, 'green')
+      })
       .catch(err => this.toastService.show('The post was not created, please try again later.', 5000, 'red'));
-
-      this.post.title = '';
-      this.post.imageUrl = '';
-      this.post.date = '';
-      this.post.note = '';
-      this.post.warcraftLogsUrl = '';
     } else {
       this.toastService.show('The post must have a title, date, and image.', 5000, 'red');
     }
